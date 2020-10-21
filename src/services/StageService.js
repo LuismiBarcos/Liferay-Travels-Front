@@ -13,15 +13,14 @@ export default class StructuredContentService {
   async getTripStages(tripId) {
     // Step 4. Get, create and delete stages -- Delete the return ""; code and uncomment
     // the code below to use the GraphQL client with the query getTripStagesQuery
-    return "";
-    // return client
-    //   .query({
-    //     query: getTripStagesQuery,
-    //     variables: {
-    //       tripId,
-    //     },
-    //   })
-    //   .then((response) => response.data.tripStages);
+    return client
+      .query({
+        query: getTripStagesQuery,
+        variables: {
+          tripId,
+        },
+      })
+      .then((response) => response.data.tripStages);
   }
 
   /**
@@ -35,17 +34,16 @@ export default class StructuredContentService {
   async createTripStage(tripId, name, description, place, image) {
     // Step 4. Get, create and delete stages -- Delete the return ""; code and uncomment
     // the code below to use the GraphQL client with the query createTripStageQuery
-    return "";
-    // return client.mutate({
-    //   mutation: createTripStageQuery,
-    //   variables: {
-    //     tripId,
-    //     name,
-    //     description,
-    //     place,
-    //     image,
-    //   },
-    // });
+    return client.mutate({
+      mutation: createTripStageQuery,
+      variables: {
+        tripId,
+        name,
+        description,
+        place,
+        image,
+      },
+    });
   }
 
   /**
@@ -55,13 +53,12 @@ export default class StructuredContentService {
   async deleteTripStage(stageId) {
     // Step 4. Get, create and delete stages -- Delete the return ""; code and uncomment
     // the code below to use the GraphQL client with the query deleteTripStageQuery
-    return "";
-    // return client.mutate({
-    //   mutation: deleteTripStageQuery,
-    //   variables: {
-    //     stageId,
-    //   },
-    // });
+    return client.mutate({
+      mutation: deleteTripStageQuery,
+      variables: {
+        stageId,
+      },
+    });
   }
 
   /**

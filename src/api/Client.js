@@ -114,10 +114,47 @@ export const deleteTripQuery = gql`
 `;
 
 // Step 4. Get, create and delete stages -- Complete the query
-export const getTripStagesQuery = "gql``";
+export const getTripStagesQuery = gql`
+  query tripStages($tripId: Long!) {
+    tripStages(tripId: $tripId) {
+      items {
+        id
+        name
+        place
+        description
+        image
+      }
+    }
+  }
+`;
 
 // Step 4. Get, create and delete stages -- Complete the query
-export const createTripStageQuery = "gql``";
+export const createTripStageQuery = gql`
+  mutation createTripStage(
+    $tripId: Long!
+    $name: String!
+    $description: String!
+    $place: String!
+    $image: String!
+  ) {
+    createTripStage(
+      tripId: $tripId
+      stage: {
+        name: $name
+        description: $description
+        place: $place
+        image: $image
+      }
+    ) {
+      id
+      name
+    }
+  }
+`;
 
 // Step 4. Get, create and delete stages -- Complete the query
-export const deleteTripStageQuery = "gql``";
+export const deleteTripStageQuery = gql`
+  mutation deleteStage($stageId: Long!) {
+    deleteStage(stageId: $stageId)
+  }
+`;
