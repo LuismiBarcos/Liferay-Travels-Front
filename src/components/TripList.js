@@ -101,14 +101,16 @@ export default withRouter(({ homeViewModel, location }) => {
                   action={
                     // Step 6. Actions -- Add the necessary code to show the DeleteIcon depending on the actions
                     // HINT: exists an action called "delete"
-                    <IconButton
-                      aria-label="settings"
-                      onClick={() => {
-                        homeViewModel.deleteTrip(trip.id);
-                      }}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
+                    trip.actions["delete"] && (
+                      <IconButton
+                        aria-label="settings"
+                        onClick={() => {
+                          homeViewModel.deleteTrip(trip.id);
+                        }}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    )
                   }
                   title={trip.name}
                   subheader={trip.startingDate}
@@ -137,99 +139,101 @@ export default withRouter(({ homeViewModel, location }) => {
             </div>
           ))}
         {/* // Step 6. Actions -- Add to the query the necessary code to retrieve the actions */}
-        <>
-          <Fab
-            aria-label="add"
-            className={classes.fab}
-            color="primary"
-            onClick={handleModalOpen}
-          >
-            <AddIcon />
-          </Fab>
-          <Modal
-            onClose={handleModalClose}
-            open={isModalOpen}
-            ui={
-              <>
-                <Typography variant="h3">Create a trip</Typography>
-                <div className="mt-3">
-                  <TextField
-                    id="standard-basic"
-                    label="Trip name"
-                    variant="outlined"
-                    ref={tripName}
-                    fullWidth
-                  />
-                </div>
-                <div className="mt-4">
-                  <TextField
-                    id="standard-textarea"
-                    label="Trip description"
-                    placeholder="description"
-                    rows="4"
-                    rowsMax="4"
-                    variant="outlined"
-                    ref={tripDescription}
-                    multiline
-                    fullWidth
-                  />
-                </div>
-                <div className={classes.startingDate}>
-                  <TextField
-                    id="date"
-                    label="Starting date"
-                    type="date"
-                    ref={tripStartingDate}
-                    variant="outlined"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                  <div>
-                    <span className="mr-2">{tripImageName}</span>
-                    <input
-                      accept="image/*"
-                      className={classes.input}
-                      id="contained-button-file"
-                      type="file"
-                      ref={tripImage}
-                      onChange={(e) => {
-                        setTripImageName(e.currentTarget.files[0].name);
+        {actions["create"] && (
+          <>
+            <Fab
+              aria-label="add"
+              className={classes.fab}
+              color="primary"
+              onClick={handleModalOpen}
+            >
+              <AddIcon />
+            </Fab>
+            <Modal
+              onClose={handleModalClose}
+              open={isModalOpen}
+              ui={
+                <>
+                  <Typography variant="h3">Create a trip</Typography>
+                  <div className="mt-3">
+                    <TextField
+                      id="standard-basic"
+                      label="Trip name"
+                      variant="outlined"
+                      ref={tripName}
+                      fullWidth
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <TextField
+                      id="standard-textarea"
+                      label="Trip description"
+                      placeholder="description"
+                      rows="4"
+                      rowsMax="4"
+                      variant="outlined"
+                      ref={tripDescription}
+                      multiline
+                      fullWidth
+                    />
+                  </div>
+                  <div className={classes.startingDate}>
+                    <TextField
+                      id="date"
+                      label="Starting date"
+                      type="date"
+                      ref={tripStartingDate}
+                      variant="outlined"
+                      InputLabelProps={{
+                        shrink: true,
                       }}
                     />
-                    <label htmlFor="contained-button-file">
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        component="span"
-                      >
-                        Upload
-                      </Button>
-                    </label>
+                    <div>
+                      <span className="mr-2">{tripImageName}</span>
+                      <input
+                        accept="image/*"
+                        className={classes.input}
+                        id="contained-button-file"
+                        type="file"
+                        ref={tripImage}
+                        onChange={(e) => {
+                          setTripImageName(e.currentTarget.files[0].name);
+                        }}
+                      />
+                      <label htmlFor="contained-button-file">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          component="span"
+                        >
+                          Upload
+                        </Button>
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div className={classes.createButton}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => {
-                      homeViewModel
-                        .createTrip(
-                          tripName.current.lastChild.firstChild.value,
-                          tripDescription.current.lastChild.firstChild.value,
-                          tripStartingDate.current.lastChild.firstChild.value,
-                          tripImage.current.files[0]
-                        )
-                        .then(handleModalClose);
-                    }}
-                  >
-                    Create
-                  </Button>
-                </div>
-              </>
-            }
-          />
-        </>
+                  <div className={classes.createButton}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => {
+                        homeViewModel
+                          .createTrip(
+                            tripName.current.lastChild.firstChild.value,
+                            tripDescription.current.lastChild.firstChild.value,
+                            tripStartingDate.current.lastChild.firstChild.value,
+                            tripImage.current.files[0]
+                          )
+                          .then(handleModalClose);
+                      }}
+                    >
+                      Create
+                    </Button>
+                  </div>
+                </>
+              }
+            />
+          </>
+        )}
       </div>
     </div>
   );
