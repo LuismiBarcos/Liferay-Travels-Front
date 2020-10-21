@@ -30,13 +30,12 @@ export const getFilteredTrips = (filter) => {
   filter = `name eq '${filter}'`;
   // Step 5. Filter trip by name -- -- Delete the return ""; code and uncomment
   // the code below to use the GraphQL client with the query getFilteredTripsQuery
-  return "";
-  // return client.query({
-  //   query: getFilteredTripsQuery,
-  //   variables: {
-  //     filter,
-  //   },
-  // });
+  return client.query({
+    query: getFilteredTripsQuery,
+    variables: {
+      filter,
+    },
+  });
 };
 
 export const getUserAccountSitesQuery = gql`
@@ -52,7 +51,19 @@ export const getUserAccountSitesQuery = gql`
 
 // Step 6. Actions -- Add to the query the necessary code to retrieve the actions
 // Step 5. Filter trip by name -- Complete the query. HINT: Take a look to getFilteredTrips in this file
-export const getFilteredTripsQuery = "gql``";
+export const getFilteredTripsQuery = gql`
+  query trips($filter: String!) {
+    trips(filter: $filter) {
+      items {
+        id
+        name
+        description
+        startingDate
+        image
+      }
+    }
+  }
+`;
 
 // Step 2. Get users -- Complete the query
 export const getUsersBySiteQuery = gql`
