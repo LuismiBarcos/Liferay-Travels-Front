@@ -70,13 +70,48 @@ export const getUsersBySiteQuery = gql`
 
 // Step 6. Actions -- Add to the query the necessary code to retrieve the actions
 // Step 3. Get, create and delete trips -- Complete the query
-export const getTripsQuery = "gql``";
+export const getTripsQuery = gql`
+  query trips {
+    trips {
+      items {
+        id
+        name
+        description
+        startingDate
+        image
+      }
+    }
+  }
+`;
 
 // Step 3. Get, create and delete trips -- Complete the query
-export const createTripQuery = "gql``";
+export const createTripQuery = gql`
+  mutation createTrip(
+    $name: String!
+    $description: String!
+    $startingDate: Date!
+    $image: String!
+  ) {
+    createTrip(
+      trip: {
+        name: $name
+        description: $description
+        startingDate: $startingDate
+        image: $image
+      }
+    ) {
+      name
+      description
+    }
+  }
+`;
 
 // Step 3. Get, create and delete trips -- Complete the query
-export const deleteTripQuery = "gql``";
+export const deleteTripQuery = gql`
+  mutation deleteTrip($tripId: Long!) {
+    deleteTrip(tripId: $tripId)
+  }
+`;
 
 // Step 4. Get, create and delete stages -- Complete the query
 export const getTripStagesQuery = "gql``";

@@ -13,12 +13,11 @@ export default class TripService {
   async getTrips() {
     // Step 3. Get, create and delete trips -- Delete the return ""; code and uncomment
     // the code below to use the GraphQL client with the query getTripsQuery
-    return "";
-    // return client
-    //   .query({
-    //     query: getTripsQuery,
-    //   })
-    //   .then((response) => response.data.trips);
+    return client
+      .query({
+        query: getTripsQuery,
+      })
+      .then((response) => response.data.trips);
   }
 
   /**
@@ -32,16 +31,15 @@ export default class TripService {
   createTrip(name, description, startingDate, image) {
     // Step 3. Get, create and delete trips -- Delete the return ""; code and uncomment
     // the code below to use the GraphQL client with the query createTripQuery
-    return "";
-    // return client.mutate({
-    //   mutation: createTripQuery,
-    //   variables: {
-    //     name,
-    //     description,
-    //     startingDate,
-    //     image,
-    //   },
-    // });
+    return client.mutate({
+      mutation: createTripQuery,
+      variables: {
+        name,
+        description,
+        startingDate,
+        image,
+      },
+    });
   }
 
   /**
@@ -51,17 +49,16 @@ export default class TripService {
   deleteTrip(tripId) {
     // Step 3. Get, create and delete trips -- Delete the return ""; code and uncomment
     // the code below to use the GraphQL client with the query deleteTripQuery
-    return "";
-    // return client.mutate({
-    //   mutation: deleteTripQuery,
-    //   variables: {
-    //     tripId,
-    //   },
-    // });
+    return client.mutate({
+      mutation: deleteTripQuery,
+      variables: {
+        tripId,
+      },
+    });
   }
 
   async filterTrips(filter) {
-    return getFilteredTrips(filter).then(response => response.data.trips);
+    return getFilteredTrips(filter).then((response) => response.data.trips);
   }
 
   /**
