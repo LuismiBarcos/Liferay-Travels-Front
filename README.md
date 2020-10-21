@@ -1,6 +1,6 @@
 # Liferay Travels
 
-React application for the Liferay Symposium Spain 2020 Workshop: Construyendo una SPA para exprimir las APIs Headless.
+React application for the Liferay Workshop: Building an SPA using Liferay's Headless APIs.
 
 The application will consist of a little app to manage the travels of the headless team. Each travel will have one or more stages where visit interesting cities.
 
@@ -25,3 +25,38 @@ In other words, each step commit is the start line of the step and the solution 
 * Javascript and React JS. It is not necessary to have experience with the development of a React application but be familiar with some concepts.
 
 * GraphQL (queries and mutations). As before, it is not necessary to have experience but be familiar with some concepts.
+
+## Step 1: Start the React application
+
+In the root folder insert the following command: `npm install` (or `npm i` for less typing 😁)
+
+Start the app with the command `npm start`
+
+## Step 2: Get users
+
+Complete or uncomment the code necessary to make a request using Apollo.
+
+Use the comments `// Step 2. Get users` as a guide to navigate among the code.
+
+## Step 3: Get, create and delete trips
+
+Complete or uncomment the code necessary to make a request using Apollo.
+
+Use the comments `// Step 3. Get, create and delete trips` as a guide to navigate among the code.
+
+## Step 4: Get, create and delete stages
+
+Complete or uncomment the code necessary to make a request using Apollo.
+
+Use the comments `// Step 4. Get, create and delete stages` as a guide to navigate among the code.
+
+## Step 5: Filter trip by name
+
+Complete or uncomment the code necessary to make a request using Apollo.
+
+Use the comments `// Step 5. Filter trip by name` as a guide to navigate among the code.
+
+## Step 6: Actions
+Complete or uncomment the code necessary to make a request using Apollo.
+
+Use the comments `// Step 6. Actions` as a guide to navigate among the code.
