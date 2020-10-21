@@ -8,14 +8,13 @@ export default class UsersService {
   async getUsers() {
     // Step 2. Get users -- Delete the return ""; code and uncomment
     // the code below to use the GraphQL client with the query getUsersBySiteQuery
-    return "";
-    // return client
-    //   .query({
-    //     query: getUsersBySiteQuery,
-    //     variables: {
-    //       siteKey: localStorage.getItem("groupId"),
-    //     },
-    //   })
-    //   .then((response) => response.data.siteUserAccounts);
+    return client
+      .query({
+        query: getUsersBySiteQuery,
+        variables: {
+          siteKey: localStorage.getItem("groupId"),
+        },
+      })
+      .then((response) => response.data.siteUserAccounts);
   }
 }

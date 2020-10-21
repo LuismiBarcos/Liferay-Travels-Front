@@ -55,7 +55,18 @@ export const getUserAccountSitesQuery = gql`
 export const getFilteredTripsQuery = "gql``";
 
 // Step 2. Get users -- Complete the query
-export const getUsersBySiteQuery = "gql``";
+export const getUsersBySiteQuery = gql`
+  query siteUserAccounts($siteKey: String!) {
+    siteUserAccounts(siteKey: $siteKey) {
+      items {
+        biography
+        name
+        emailAddress
+        image
+      }
+    }
+  }
+`;
 
 // Step 6. Actions -- Add to the query the necessary code to retrieve the actions
 // Step 3. Get, create and delete trips -- Complete the query
