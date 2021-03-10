@@ -1,6 +1,6 @@
 # Liferay Travels
 
-React application for the Liferay Symposium Spain 2020 Workshop: Construyendo una SPA para exprimir las APIs Headless.
+React application for the Liferay Workshop: Building an SPA using Liferay's Headless APIs.
 
 The application will consist of a little app to manage the travels of the headless team. Each travel will have one or more stages where visit interesting cities.
 
